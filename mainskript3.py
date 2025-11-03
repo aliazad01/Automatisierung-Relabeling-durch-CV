@@ -70,7 +70,6 @@ model_text = YOLO(r"C:\Users\AZADAL01\Documents\PA2\Praxis\Projekt\mainskript\fo
 
 start_time = time.time()
 # ========== Step 1: DHL Label Detection ==========
-# model_dhl = YOLO(r"C:\Users\AZADAL01\Documents\PA2\Praxis\Projekt\mainskript\foundry_modele\best_yolo_weights_for_dhl_label.pt")
 image_path = r"C:\Users\AZADAL01\Documents\PA2\Praxis\Projekt\mainskript\testen\input\test\122220016326836954977040-2025228173218.jpg"
 
 # Load image once (in memory)
@@ -141,3 +140,4 @@ if postal_code:
 end_time = time.time()
 
 print(f"\nTotal runtime: {end_time - start_time:.2f} seconds")
+
