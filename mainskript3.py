@@ -111,8 +111,6 @@ if not cropped_text_fields:
 text_field_img = cropped_text_fields[0]
 
 # ========== Step 4: OCR directly from memory ==========
-# text_field_img is already a NumPy array (from OpenCV)
-
 # Write to a temporary JPEG file for Doctr
 with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
     cv2.imwrite(tmp.name, cv2.cvtColor(text_field_img, cv2.COLOR_RGB2BGR))
@@ -141,4 +139,5 @@ if postal_code:
 
 
 end_time = time.time()
+
 print(f"\nTotal runtime: {end_time - start_time:.2f} seconds")
