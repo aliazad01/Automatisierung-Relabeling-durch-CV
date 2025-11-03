@@ -109,7 +109,7 @@ def compute(ctx, new_checkpoint, train_data):
     output_func(f"""read_dir(train_temp_dir + "/images/train") {read_dir(train_temp_dir + "/images/train")}""")
 
     # ────────────────────────────────
-    # Configure Parameters.                        (define and get the train and val dataset from the temp repository)
+    # Configure Parameters.
     # ────────────────────────────────
     # Paths you already have from your Foundry helper:
     ROOT_DIR = train_temp_dir
@@ -129,7 +129,7 @@ def compute(ctx, new_checkpoint, train_data):
     output_func(f"EXPER_NAME: {EXPER_NAME}")
 
     # ────────────────────────────────
-    # Save the last checkpoint if we want to resume training.         (if it is incremental: save the latest epoch and then continue from there)
+    # Save the last checkpoint if we want to resume training.
     # ────────────────────────────────
     if RESUME:
         # Save the checkpoint file as a temporary file. Only take the best checkpoint
@@ -150,7 +150,7 @@ def compute(ctx, new_checkpoint, train_data):
         output_func(f"""checkpoint_file {checkpoint_file}""")
 
     # ────────────────────────────────
-    # Write the data.yaml for Ultralytics     ( for train and val dataset )
+    # Write the data.yaml for Ultralytics
     # ────────────────────────────────
     data_dict = {
         "train": train_imgs_dir,
