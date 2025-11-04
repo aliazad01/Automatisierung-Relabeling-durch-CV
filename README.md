@@ -22,7 +22,7 @@ Die Implementierung erfolgt über eine Pipeline aus mehreren Python-Skripten, di
 6. **OCR zur Extraktion der Postleitzahl (`ocr.py`)**
    Dieses Skript liest die Empfängeradresse mit OCR aus und extrahiert gezielt die Postleitzahl.
 
-Zur Vereinfachung der Nutzung wurde ein **Hauptskript (`mainskript3.py`)** entwickelt, das die gesamte Pipeline integriert und die einzelnen Schritte automatisch ausführt. Die Pipeline wurde anschließend hinsichtlich **Genauigkeit** und **Geschwindigkeit** getestet.
+Zur Vereinfachung der Nutzung wurde ein **Hauptskript (`mainskript3.py`)** entwickelt, das die gesamte Pipeline integriert und die einzelnen Schritte automatisch ausführt. Die Pipeline wurde anschließend hinsichtlich **Genauigkeit** und **Geschwindigkeit (gesammt_pipline_testen.py)** getestet.
 
 
 
