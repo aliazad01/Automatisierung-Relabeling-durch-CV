@@ -1,1 +1,28 @@
-# Automatisierung-des-Relabeling-Prozesses-durch-Computer-Vision
+# Automatisierung des Relabeling-Prozesses durch Computer Vision
+
+**Code-Struktur**
+
+Die Implementierung erfolgt über eine Pipeline aus mehreren Python-Skripten, die nacheinander verschiedene Verarbeitungsschritte auf Versandlabels durchführen:
+
+1. **Training eines YOLO-Modells zur Label-Erkennung (`yolo_zur_labelerkennung.py`)**
+   Dieses Skript trainiert ein YOLO-Modell, das Labels auf Gesamtbildern zuverlässig erkennen kann. Ein zusätzliches Skript (`yolo_zur_labelerkennung_testen.py`) ermöglicht die lokale Validierung des Modells und die Überprüfung der Erkennungsgenauigkeit.
+
+2. **Ausschneiden der Labels (`cropping.py`)**
+   Hier werden die erkannten Labels aus den Gesamtbildern ausgeschnitten, sodass nachfolgende Modelle ausschließlich auf den relevanten Label-Bereichen arbeiten.
+
+3. **Erstellung von Trainingsdaten für das Rotation-CNN (`create_data_4_rotation_cnn.py`)**
+   Dieses Skript rotiert 100 repräsentative Labels jeweils in 150 Rotationen, um Trainingsdaten für ein Convolutional Neural Network (CNN) zur Rotationserkennung zu erzeugen.
+
+4. **Rotationserkennung mittels CNN (`cnn_zur_rotationerkennung.py`)**
+   Ein CNN wurde trainiert, um die Rotation der Labels zu erkennen und diese vor der OCR-Erkennung korrekt auszurichten. In diesem Skript wird auch die Genauigkeit des Modells getestet.
+
+5. **Erkennung der Empfängeradresse (`yolo_zur_empfängeradresse_erkennung.py`)**
+   Ein zweites YOLO-Modell lokalisiert gezielt die Empfängeradresse auf den Labels. Die exakte Position der Adresse wird für die OCR-Erkennung bereitgestellt. Ein Testskript (`yolo_zur_empfängeradresse_erkennung_testen.py`) ermöglicht die Validierung der Erkennungsgenauigkeit.
+
+6. **OCR zur Extraktion der Postleitzahl (`ocr.py`)**
+   Dieses Skript liest die Empfängeradresse mit OCR aus und extrahiert gezielt die Postleitzahl.
+
+Zur Vereinfachung der Nutzung wurde ein **Hauptskript (`mainskript3.py`)** entwickelt, das die gesamte Pipeline integriert und die einzelnen Schritte automatisch ausführt. Die Pipeline wurde anschließend hinsichtlich **Genauigkeit** und **Geschwindigkeit** getestet.
+
+
+
