@@ -1,5 +1,31 @@
 # Automatisierung des Relabeling-Prozesses durch Computer Vision
 
+**Abstract**
+Die vorliegende Projektarbeit beschäftigt sich mit der Automatisierung des Relabeling-Prozesses
+durch Computer Vision im Logistikumfeld. Ziel des Projekts ist die Entwicklung eines Proof of
+Concept (PoC) zur automatisierten Durchführung des Relabeling-Prozesses. Die entwickelte
+Lösung umfasst mehrere Schritte: Labelerkennung, automatischer Bildausrichtung (Rotati-
+on), Empfängeradresseerkennung und Postleitzahl-Extraktion (OCR). Zur Objektlokalisierung
+und -klassifikation wurden zwei YOLO-Detektoren trainiert: einer zur Labelerkennung auf
+dem Gesamtbild und einer zur Empfängeradresseerkennung auf dem Label; zur Korrektur von
+Bildrotationen ein kompaktes CNN und für die Textextraktion wurde docTR eingesetzt.
+
+Nach dem Training und der Evaluation der Modelle ergaben sich folgende Ergebnisse: das
+YOLO-Modell zur Labelerkennung erreicht auf dem Testset eine Gesamtgenauigkeit von 91,5
+% und einen durchschnittlichen IoU-Wert von 0,8845; das YOLO-Modell zur Empfänger-
+adresseerkennung erzielt eine IoU-Wert von 0,8389 und eine Genauigkeit von 87,5 % . Das
+Rotations-CNN erreicht auf dem Testset eine MSE von 0,012, was einer mittleren Winkeldiffe-
+renz von 0,11° entspricht. Auf Pipeline-Ebene wurde die Postleitzahl in 55 von 62 Testbildern
+korrekt extrahiert (=89 % Genauigkeit). Die durchschnittliche Verarbeitungszeit betrug lokal
+5 Sekunden pro Bild. Für einen späteren Echtbetrieb wird eine Zielzeit von 1 Sekunde pro
+Bild angestrebt, die durch den Einsatz GPU-beschleunigter Hardware erreichbar ist. Die bisher
+erzielte Genauigkeit ist jedoch noch nicht ausreichend und soll durch weiteres Training und
+Optimierung der Modelle verbessert werden.
+
+
+
+
+
 **Code-Struktur**
 
 Die Implementierung erfolgt über eine Pipeline aus mehreren Python-Skripten, die nacheinander verschiedene Verarbeitungsschritte auf Versandlabels durchführen:
